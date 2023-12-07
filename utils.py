@@ -34,11 +34,10 @@ def correct_word(input_text):
                     'mice': 'mica', 'bản': 'bảng', 'bass': 'pát', 'bas': 'pát', 'pass': 'pát', 'bát': 'pát', 'dunghiflex': 'đứng hiflex', 'samkitchen': 'sam kitchen', 'sidehiflet': 'side hiflex', 'kgoong': 'không', 'nguồn12v': 'nguồn 12v', 'lightbx': 'loghtbox', 'diểmv': 'điểm', '1mawjt': '1 mặt', 'tươbgf': 'tường',
                     'thayhiflex': 'thay hiflex', 'bảngă': 'bảng', 'fdieenj': 'điện', 'tolt': 'tôn', 'fides': 'sides', 'ôptole': 'ốp tôn', 'shopnam': 'shopname', 'higlex': 'hiflex', 'cólogo': 'có logo', 'hôph': 'hộp'}
     trigger = False
-    if text in dict_replace:
-        for key, w in dict_replace.items():
-            replaced_text = re.sub(rf"\b{key}\b", w, text)
-            if replaced_text != text:
-                text = replaced_text
+    for key, w in dict_replace.items():
+        replaced_text = re.sub(rf"\b{key}\b", w, text)
+        if replaced_text != text:
+            text = replaced_text
         trigger = True
     try:
         re_word = text.split()[-1]
