@@ -14,11 +14,11 @@ def load_model_trained() -> Sequential:
     model.add(LSTM(256))
     model.add(Dense(256, activation="relu"))
     model.add(Dense(5332, activation="softmax"))
-    model.load_weights(r'C:\Users\BAO\OneDrive\Máy tính\recommendation_with_ss\nextword1.h5')
+    model.load_weights('nextword1.h5')
     return model
 
 def load_tokenizer():
-    tokenizer = pickle.load(open(r'C:\Users\BAO\OneDrive\Máy tính\recommendation_with_ss\my_tokenizer', 'rb'))
+    tokenizer = pickle.load(open('my_tokenizer', 'rb'))
     return tokenizer
 
 def get_prediction_eos(model, tokenizer, input_text):
