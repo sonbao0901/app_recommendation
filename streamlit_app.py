@@ -56,7 +56,6 @@ if sp:
             text = correct_word(input_text)
             res, top5 = correct_word(input_text)[0], correct_word(input_text)[2]
         else:
-            text = input_text
             text = input_text.lower()
             text = re.sub(r'[^\w\s]+', ' ', text)
             res, top5 = given_text(text)
