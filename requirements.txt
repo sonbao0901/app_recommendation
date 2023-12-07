@@ -1,5 +1,5 @@
 numpy==1.25.0
-pickle
+pickle==4.0
 tensorflow==2.14.0
 tensorflow-estimator==2.14.0
 tensorflow-intel==2.14.0
