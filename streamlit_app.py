@@ -5,7 +5,6 @@ from st_keyup import st_keyup
 import tensorflow as tf
 import numpy as np
 import re
-import imageio
 from utils import load_model_trained, load_tokenizer, get_prediction_eos
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
