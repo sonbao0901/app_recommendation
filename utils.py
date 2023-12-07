@@ -21,7 +21,7 @@ def load_tokenizer():
     tokenizer = pickle.load(open('my_tokenizer', 'rb'))
     return tokenizer
 
-def get_prediction_eos(model, tokenizer, input_text):
+def correct_word(input_text):
     dict_replace = {'tol': 'tôn', 'toll': 'tôn', 'tole': 'tôn', 'tone': 'tôn', 'tote': 'tôn', 'to le': 'tôn', 'lote': 'tôn', 'hd': 'hộp đèn', 'hđ': 'hộp đèn','told': 'tôn', 'hiflex': 'hiflex', 'hifflex':'hiflex','lightbox': 'hộp đèn', 'side': 'mặt', 'lottone': 'lót tôn', 'alumi': 'aluminium', 'choều':  'chiều',
                     'lo go': 'logo', 'in door': 'indoor', 'helfex': '', 'hefflex': '', 'heflix': '', 'hefflix': '', 'hifflet': 'hiflex', 'hiflet': 'hiflex', 'hjlex': 'hiflex', 'bạtvs': 'bạt', 'điênh': 'điện', 'nhựapvc': 'nhựa pvc', 'lightbo': 'lightbox', 'hixlef': 'hiflex', 'mặ5': 'mặt', 
                     'lop': 'lót', 'lộp': 'lót', 'lốp': 'lót', 'gắng': 'gắn', 'cp': 'chi phí', 'mặc': 'mặt', 'mac': 'mặt', 'mạt': 'mặt', 'sides': 'mặt', '1mặt': 'một mặt', 'out door': 'outdoor', 'đuện': 'điện', 'nguông': 'nguồn', 'choều': 'chiều', 'mặt_': 'mặt', 'đỡl': 'đỡ', 'totle': 'tôn',
@@ -33,14 +33,16 @@ def get_prediction_eos(model, tokenizer, input_text):
     
     if input_text in dict_replace:
         predicted_word = dict_replace[input_text]
-    else:
-        token_list = tokenizer.texts_to_sequences([input_text])[0]
-        token_list = pad_sequences([token_list], maxlen=45, padding='pre')
-        preds = model.predict(token_list)
-        #Find the word corresponding to the predicted index in tokenizer.word_index
-        predicted_word_index = np.argmax(preds)
-        predicted_word = [word for word, index in tokenizer.word_index.items() if index == predicted_word_index][0]
+        return predicted_word
 
+def get_prediction_eos(model, tokenizer, input_text):
+
+    token_list = tokenizer.texts_to_sequences([input_text])[0]
+    token_list = pad_sequences([token_list], maxlen=45, padding='pre')
+    preds = model.predict(token_list)
+        #Find the word corresponding to the predicted index in tokenizer.word_index
+    predicted_word_index = np.argmax(preds)
+    predicted_word = [word for word, index in tokenizer.word_index.items() if index == predicted_word_index][0]
     # Get the indices of the top 5 predicted words
     top5_indices = np.argsort(preds[0])[-5:][::-1]
     # Find the words corresponding to the top 5 indices in tokenizer.word_index
