@@ -5,6 +5,7 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.layers import LSTM, Dense, Embedding
+import re 
 
 def load_model_trained() -> Sequential:
     # Create the model
