@@ -56,7 +56,9 @@ if sp:
             text = correct_word(input_text)
             res, top5 = correct_word(input_text)[0], correct_word(input_text)[2]
         else:
-            text = correct_word(input_text)
+            text = input_text
+            text = input_text.lower()
+            text = re.sub(r'[^\w\s]+', ' ', text)
             res, top5 = given_text(text)
         st.text_area("Word Predict with Given text", res, key="Predicted_word")
         st.text_area("Predicted List is Here", top5, key="Predicted_list")    
