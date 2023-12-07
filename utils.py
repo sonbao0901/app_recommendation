@@ -23,26 +23,27 @@ def load_tokenizer():
     return tokenizer
 
 def correct_word(input_text):
-    text = input_text.lower()
-    text = re.sub(r'[^\w\s]+', ' ', text)
-    dict_replace = {'tol': 'tôn', 'toll': 'tôn', 'tole': 'tôn', 'tone': 'tôn', 'tote': 'tôn', 'to le': 'tôn', 'lote': 'tôn', 'hd': 'hộp đèn', 'hđ': 'hộp đèn','told': 'tôn', 'hiflex': 'hiflex', 'hifflex':'hiflex','lightbox': 'hộp đèn', 'side': 'mặt', 'lottone': 'lót tôn', 'alumi': 'aluminium', 'choều':  'chiều',
-                    'lo go': 'logo', 'in door': 'indoor', 'helfex': '', 'hefflex': '', 'heflix': '', 'hefflix': '', 'hifflet': 'hiflex', 'hiflet': 'hiflex', 'hjlex': 'hiflex', 'bạtvs': 'bạt', 'điênh': 'điện', 'nhựapvc': 'nhựa pvc', 'lightbo': 'lightbox', 'hixlef': 'hiflex', 'mặ5': 'mặt', 
-                    'lop': 'lót', 'lộp': 'lót', 'lốp': 'lót', 'gắng': 'gắn', 'cp': 'chi phí', 'mặc': 'mặt', 'mac': 'mặt', 'mạt': 'mặt', 'sides': 'mặt', '1mặt': 'một mặt', 'out door': 'outdoor', 'đuện': 'điện', 'nguông': 'nguồn', 'choều': 'chiều', 'mặt_': 'mặt', 'đỡl': 'đỡ', 'totle': 'tôn',
-                    '1mặc': 'một mặt', '1mac': 'một mặt', '1mạt': 'một mặt', '1măt': 'một mặt','2mặt': 'hai mặt', '2mặc': 'hai mặt', '2mac': 'hai mặt', '2mạt': 'hai mặt', 'uotdoor': 'outdoor', 'chử': 'chữ', 'viềng': 'viền', 'tờ_cán': 'tờ cán', 'kim_ruột': 'kim ruột', 'lótbtole': 'lót tôn',
-                    '2măt': 'hai mặt' ,'bản': 'bảng', '1side': 'một mặt', '1sides': 'một mặt', '2side': 'hai mặt', '2sides': 'hai mặt', 'lote': 'tôn', 'top': 'tôn', 'shopname': 'shop name', 'vs': '', 'nỗi': 'nổi', 'manhg': 'mạng', 'caps': 'cáp', 'cphi': 'chi phí', '_bia': 'bia', 'thên': 'thêm',
-                    'h.': 'chiều ngang', 'v.': 'chiều dọc', 'vc': 'vận chuyển', 'bh': 'bảng hiệu', 'tolet': 'tôn', 'bạc': 'bạt', 'lsp81': 'lắp', 'c b': 'cb', 'alu': 'aluminium', 'gpm': 'giấy phép', 'gpqc': 'giấy phép', 'phíthu': 'phí thu', 'dọc15m': 'dọc 15m', '1logo': '1 logo', 'role': 'tôn',
-                    'mice': 'mica', 'bản': 'bảng', 'bass': 'pát', 'bas': 'pát', 'pass': 'pát', 'bát': 'pát', 'dunghiflex': 'đứng hiflex', 'samkitchen': 'sam kitchen', 'sidehiflet': 'side hiflex', 'kgoong': 'không', 'nguồn12v': 'nguồn 12v', 'lightbx': 'loghtbox', 'diểmv': 'điểm', '1mawjt': '1 mặt', 'tươbgf': 'tường',
-                    'thayhiflex': 'thay hiflex', 'bảngă': 'bảng', 'fdieenj': 'điện', 'tolt': 'tôn', 'fides': 'sides', 'ôptole': 'ốp tôn', 'shopnam': 'shopname', 'higlex': 'hiflex', 'cólogo': 'có logo', 'hôph': 'hộp'}
-    trigger = False
-    for key, w in dict_replace.items():
-        replaced_text = re.sub(rf"\b{key}\b", w, text)
-        if replaced_text != text:
-            text = replaced_text
-        trigger = True
     try:
+        text = input_text.lower()
+        text = re.sub(r'[^\w\s]+', ' ', text)
+        dict_replace = {'tol': 'tôn', 'toll': 'tôn', 'tole': 'tôn', 'tone': 'tôn', 'tote': 'tôn', 'to le': 'tôn', 'lote': 'tôn', 'hd': 'hộp đèn', 'hđ': 'hộp đèn','told': 'tôn', 'hiflex': 'hiflex', 'hifflex':'hiflex','lightbox': 'hộp đèn', 'side': 'mặt', 'lottone': 'lót tôn', 'alumi': 'aluminium', 'choều':  'chiều',
+                        'lo go': 'logo', 'in door': 'indoor', 'helfex': '', 'hefflex': '', 'heflix': '', 'hefflix': '', 'hifflet': 'hiflex', 'hiflet': 'hiflex', 'hjlex': 'hiflex', 'bạtvs': 'bạt', 'điênh': 'điện', 'nhựapvc': 'nhựa pvc', 'lightbo': 'lightbox', 'hixlef': 'hiflex', 'mặ5': 'mặt', 
+                        'lop': 'lót', 'lộp': 'lót', 'lốp': 'lót', 'gắng': 'gắn', 'cp': 'chi phí', 'mặc': 'mặt', 'mac': 'mặt', 'mạt': 'mặt', 'sides': 'mặt', '1mặt': 'một mặt', 'out door': 'outdoor', 'đuện': 'điện', 'nguông': 'nguồn', 'choều': 'chiều', 'mặt_': 'mặt', 'đỡl': 'đỡ', 'totle': 'tôn',
+                        '1mặc': 'một mặt', '1mac': 'một mặt', '1mạt': 'một mặt', '1măt': 'một mặt','2mặt': 'hai mặt', '2mặc': 'hai mặt', '2mac': 'hai mặt', '2mạt': 'hai mặt', 'uotdoor': 'outdoor', 'chử': 'chữ', 'viềng': 'viền', 'tờ_cán': 'tờ cán', 'kim_ruột': 'kim ruột', 'lótbtole': 'lót tôn',
+                        '2măt': 'hai mặt' ,'bản': 'bảng', '1side': 'một mặt', '1sides': 'một mặt', '2side': 'hai mặt', '2sides': 'hai mặt', 'lote': 'tôn', 'top': 'tôn', 'shopname': 'shop name', 'vs': '', 'nỗi': 'nổi', 'manhg': 'mạng', 'caps': 'cáp', 'cphi': 'chi phí', '_bia': 'bia', 'thên': 'thêm',
+                        'h.': 'chiều ngang', 'v.': 'chiều dọc', 'vc': 'vận chuyển', 'bh': 'bảng hiệu', 'tolet': 'tôn', 'bạc': 'bạt', 'lsp81': 'lắp', 'c b': 'cb', 'alu': 'aluminium', 'gpm': 'giấy phép', 'gpqc': 'giấy phép', 'phíthu': 'phí thu', 'dọc15m': 'dọc 15m', '1logo': '1 logo', 'role': 'tôn',
+                        'mice': 'mica', 'bản': 'bảng', 'bass': 'pát', 'bas': 'pát', 'pass': 'pát', 'bát': 'pát', 'dunghiflex': 'đứng hiflex', 'samkitchen': 'sam kitchen', 'sidehiflet': 'side hiflex', 'kgoong': 'không', 'nguồn12v': 'nguồn 12v', 'lightbx': 'loghtbox', 'diểmv': 'điểm', '1mawjt': '1 mặt', 'tươbgf': 'tường',
+                        'thayhiflex': 'thay hiflex', 'bảngă': 'bảng', 'fdieenj': 'điện', 'tolt': 'tôn', 'fides': 'sides', 'ôptole': 'ốp tôn', 'shopnam': 'shopname', 'higlex': 'hiflex', 'cólogo': 'có logo', 'hôph': 'hộp'}
+        trigger = False
+        if text.split()[-1] in dict_replace:
+            for key, w in dict_replace.items():
+                replaced_text = re.sub(rf"\b{key}\b", w, text)
+                if replaced_text != text:
+                    text = replaced_text
+            trigger = True
         re_word = text.split()[-1]
     except IndexError as e:
-        re_word = None
+        text, trigger, re_word = None, None, None
     return [text, trigger, re_word]
 
 def get_prediction_eos(model, tokenizer, input_text):
