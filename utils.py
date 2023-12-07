@@ -38,7 +38,10 @@ def correct_word(input_text):
         for key, w in dict_replace.items():
             text = re.sub(rf"\b{key}\b", w, text)
         trigger = True
-    re_word = text.split()[-1]
+    try:
+        re_word = text.split()[-1]
+    except IndexError as e:
+        re_word = None
     return [text, trigger, re_word]
 
 def get_prediction_eos(model, tokenizer, input_text):
