@@ -1,9 +1,5 @@
-streamlit
-streamlit-keyup
+streamlit>=1.2.0
+streamlit-keyup>=0.1.9
 numpy
-pickle
 tensorflow
-tensorflow-estimator
-tensorflow-intel
-tensorflow-io-gcs-filesystem
 regex
