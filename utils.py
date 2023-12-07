@@ -36,7 +36,7 @@ def correct_word(input_text):
     trigger = False
     if text in dict_replace:
         for key, w in dict_replace.items():
-            text = re.sub(rf"\b{key}\b", w, text)
+            replaced_text = re.sub(rf"\b{key}\b", w, text)
             if replaced_text != text:
                 text = replaced_text
         trigger = True
