@@ -34,12 +34,11 @@ def correct_word(input_text):
                     'mice': 'mica', 'bản': 'bảng', 'bass': 'pát', 'bas': 'pát', 'pass': 'pát', 'bát': 'pát', 'dunghiflex': 'đứng hiflex', 'samkitchen': 'sam kitchen', 'sidehiflet': 'side hiflex', 'kgoong': 'không', 'nguồn12v': 'nguồn 12v', 'lightbx': 'loghtbox', 'diểmv': 'điểm', '1mawjt': '1 mặt', 'tươbgf': 'tường',
                     'thayhiflex': 'thay hiflex', 'bảngă': 'bảng', 'fdieenj': 'điện', 'tolt': 'tôn', 'fides': 'sides', 'ôptole': 'ốp tôn', 'shopnam': 'shopname', 'higlex': 'hiflex', 'cólogo': 'có logo', 'hôph': 'hộp'}
     trigger = False
-    re_word = 'a'
     if text in dict_replace:
         for key, w in dict_replace.items():
             text = re.sub(rf"\b{key}\b", w, text)
-            re_word = key
         trigger = True
+    re_word = text.split()[-1]
     return [text, trigger, re_word]
 
 def get_prediction_eos(model, tokenizer, input_text):
