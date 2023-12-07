@@ -5,7 +5,7 @@ from st_keyup import st_keyup
 import tensorflow as tf
 import numpy as np
 import re
-from utils import load_model_trained, load_tokenizer, get_prediction_eos
+from utils import load_model_trained, load_tokenizer, get_prediction_eos, correct_word
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
@@ -52,12 +52,13 @@ sp = True
 col1, col2 = st.columns(2)
 if sp:
     with col1:
-        text = input_text.lower()
-        text = re.sub(r'[^\w\s]+', ' ', text)
-        res, top5 = given_text(text)
+        if correct_word(input_text)[1]:
+            text = correct_word(input_text)
+            res, top5 = correct_word(input_text)[0], correct_word(input_text)[2]
+        else:
+            text = correct_word(input_text)
+            res, top5 = given_text(text)
         st.text_area("Word Predict with Given text", res, key="Predicted_word")
-        st.text_area("Predicted List is Here", top5, key="Predicted_list")
-    
+        st.text_area("Predicted List is Here", top5, key="Predicted_list")    
     with col2:
         st.markdown("![Alt Text](https://media.tenor.com/zXhK-0R9y1gAAAAi/vengeful-notes.gif)")
-
