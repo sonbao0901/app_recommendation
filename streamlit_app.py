@@ -52,7 +52,7 @@ sp = True
 col1, col2 = st.columns(2)
 if sp:
     with col1:
-        if correct_word(input_text)[1] != input_text:
+        if correct_word(input_text)[0] != input_text:
             text = correct_word(input_text)
             res, top5 = correct_word(input_text)[0], correct_word(input_text)[1]
         else:
