@@ -34,17 +34,15 @@ def correct_word(input_text):
                         'h.': 'chiều ngang', 'v.': 'chiều dọc', 'vc': 'vận chuyển', 'bh': 'bảng hiệu', 'tolet': 'tôn', 'bạc': 'bạt', 'lsp81': 'lắp', 'c b': 'cb', 'alu': 'aluminium', 'gpm': 'giấy phép', 'gpqc': 'giấy phép', 'phíthu': 'phí thu', 'dọc15m': 'dọc 15m', '1logo': '1 logo', 'role': 'tôn',
                         'mice': 'mica', 'bản': 'bảng', 'bass': 'pát', 'bas': 'pát', 'pass': 'pát', 'bát': 'pát', 'dunghiflex': 'đứng hiflex', 'samkitchen': 'sam kitchen', 'sidehiflet': 'side hiflex', 'kgoong': 'không', 'nguồn12v': 'nguồn 12v', 'lightbx': 'loghtbox', 'diểmv': 'điểm', '1mawjt': '1 mặt', 'tươbgf': 'tường',
                         'thayhiflex': 'thay hiflex', 'bảngă': 'bảng', 'fdieenj': 'điện', 'tolt': 'tôn', 'fides': 'sides', 'ôptole': 'ốp tôn', 'shopnam': 'shopname', 'higlex': 'hiflex', 'cólogo': 'có logo', 'hôph': 'hộp'}
-        trigger = False
         if text.split()[-1] in dict_replace:
             for key, w in dict_replace.items():
                 replaced_text = re.sub(rf"\b{key}\b", w, text)
                 if replaced_text != text:
                     text = replaced_text
-            trigger = True
         re_word = text.split()[-1]
     except IndexError as e:
-        text, trigger, re_word = None, None, None
-    return [text, trigger, re_word]
+        text, re_word = None, None
+    return [text, re_word]
 
 def get_prediction_eos(model, tokenizer, input_text):
 
